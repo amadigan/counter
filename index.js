@@ -1,17 +1,52 @@
-function update(change) {
-  var counter = $('#counter');
-  var newValue = parseInt(counter.text()) + change;
-  counter.text(newValue);
-  document.location.hash = '#' + newValue;
-}
-
 $(
   function($) {
-    if (document.location.hash && document.location.hash.length > 1)  {
-      $('#counter').text(parseInt(document.location.hash.substr(1)));
+    var counter = $('#counter');
+
+    function increment(change) {
+      setValue(parseInt(counter.text()) + change, true);
     }
 
-    $('#subtract').on('click', update.bind(null, -1));
-    $('#add').on('click', update.bind(null, 1));
+    function setValue(newValue, animate) {
+      newValue = "" + newValue;
+      var em = parseInt(counter.css('font-size'));
+
+      if (parseInt(counter.css('width')) < newValue.length * em)  {
+        var newCSS = {width: newValue.length + "em"};
+        if (animate)  {
+          counter.animate(newCSS);
+        } else {
+          counter.css(newCSS);
+        }
+      }
+
+      counter.text(newValue);
+      document.location.hash = '#' + newValue;
+    }
+
+    if (document.location.hash && document.location.hash.length > 1)  {
+      setValue(parseInt(document.location.hash.substr(1)));
+    }
+
+    $('#subtract').on('click', increment.bind(null, -1));
+    $('#add').on('click', increment.bind(null, 1));
+    $('#reset').on('click', setValue.bind(null, 0));
+
+    $('body').on('keydown', function(e) {
+      switch (e.which)  {
+        case 38: // Up arrow
+        case 39: // Right arrow
+        case 32: // Space
+          update(1);
+          break;
+        case 37: // Left arrow
+        case 40: // Down arrow
+        case 8: // Delete (mac)
+          update(-1);
+          break;
+        case 27: // Esc
+          setValue(0);
+          break;
+      }
+    });
   }
 )

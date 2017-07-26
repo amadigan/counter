@@ -11,10 +11,9 @@
       integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
       crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
     <script
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -24,9 +23,14 @@
   </head>
   <body>
     <div id="wrapper">
-        <button id="subtract" class="btn btn-primary"><span class="glyphicon glyphicon-minus"></span></button>
-        <div id="counter">0</div>
-        <button id="add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+        <div id="counter-row">
+          <button id="subtract" class="btn btn-primary"><span class="glyphicon glyphicon-minus"></span></button>
+          <div id="counter">0</div>
+          <button id="add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+
+        <button id="reset" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
     </div>
+
   </body>
 </html>
