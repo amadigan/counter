@@ -36,12 +36,12 @@ $(
         case 38: // Up arrow
         case 39: // Right arrow
         case 32: // Space
-          update(1);
+          increment(1);
           break;
         case 37: // Left arrow
         case 40: // Down arrow
         case 8: // Delete (mac)
-          update(-1);
+          increment(-1);
           break;
         case 27: // Esc
           setValue(0);
